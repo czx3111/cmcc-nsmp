@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com-user-service-impl/com-user-service-impl.iml" filepath="$PROJECT_DIR$/com-user-service-impl/com-user-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nsmp-assetprop-service-interace/nsmp-assetprop-service-interace.iml" filepath="$PROJECT_DIR$/nsmp-assetprop-service-interace/nsmp-assetprop-service-interace.iml" />
+    </modules>
+  </component>
+</project>

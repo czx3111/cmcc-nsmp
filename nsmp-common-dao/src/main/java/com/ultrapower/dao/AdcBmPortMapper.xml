@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ultrapower.dao.AdcBmPortMapper" >
+  <resultMap id="BaseResultMap" type="com.ultrapower.pojo.AdcBmPort" >
+    <id column="PK_BM_PORT" property="pkBmPort" jdbcType="CHAR" />
+    <result column="VERSION" property="version" jdbcType="VARCHAR" />
+    <result column="PROV_CODE" property="provCode" jdbcType="VARCHAR" />
+    <result column="PORT_TYPE" property="portType" jdbcType="INTEGER" />
+    <result column="PROTOCOL" property="protocol" jdbcType="VARCHAR" />
+    <result column="PORT" property="port" jdbcType="VARCHAR" />
+    <result column="SEVERITY_LEVEL" property="severityLevel" jdbcType="INTEGER" />
+    <result column="IS_DELETED" property="isDeleted" jdbcType="INTEGER" />
+    <result column="PK_CREATOR" property="pkCreator" jdbcType="CHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="PK_MENDER" property="pkMender" jdbcType="CHAR" />
+    <result column="MEND_TIME_LAST" property="mendTimeLast" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PK_BM_PORT, VERSION, PROV_CODE, PORT_TYPE, PROTOCOL, PORT, SEVERITY_LEVEL, IS_DELETED, 
+    PK_CREATOR, CREATE_TIME, PK_MENDER, MEND_TIME_LAST
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ultrapower.pojo.AdcBmPortExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from adc_bm_port
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from adc_bm_port
+    where PK_BM_PORT = #{pkBmPort,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from adc_bm_port
+    where PK_BM_PORT = #{pkBmPort,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ultrapower.pojo.AdcBmPortExample" >
+    delete from adc_bm_port
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ultrapower.pojo.AdcBmPort" >
+    insert into adc_bm_port (PK_BM_PORT, VERSION, PROV_CODE, 
+      PORT_TYPE, PROTOCOL, PORT, 
+      SEVERITY_LEVEL, IS_DELETED, PK_CREATOR, 
+      CREATE_TIME, PK_MENDER, MEND_TIME_LAST
+      )
+    values (#{pkBmPort,jdbcType=CHAR}, #{version,jdbcType=VARCHAR}, #{provCode,jdbcType=VARCHAR}, 
+      #{portType,jdbcType=INTEGER}, #{protocol,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, 
+      #{severityLevel,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, #{pkCreator,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{pkMender,jdbcType=CHAR}, #{mendTimeLast,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ultrapower.pojo.AdcBmPort" >
+    insert into adc_bm_port
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkBmPort != null" >
+        PK_BM_PORT,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="provCode != null" >
+        PROV_CODE,
+      </if>
+      <if test="portType != null" >
+        PORT_TYPE,
+      </if>
+      <if test="protocol != null" >
+        PROTOCOL,
+      </if>
+      <if test="port != null" >
+        PORT,
+      </if>
+      <if test="severityLevel != null" >
+        SEVERITY_LEVEL,
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED,
+      </if>
+      <if test="pkCreator != null" >
+        PK_CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="pkMender != null" >
+        PK_MENDER,
+      </if>
+      <if test="mendTimeLast != null" >
+        MEND_TIME_LAST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkBmPort != null" >
+        #{pkBmPort,jdbcType=CHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="provCode != null" >
+        #{provCode,jdbcType=VARCHAR},
+      </if>
+      <if test="portType != null" >
+        #{portType,jdbcType=INTEGER},
+      </if>
+      <if test="protocol != null" >
+        #{protocol,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="severityLevel != null" >
+        #{severityLevel,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="pkCreator != null" >
+        #{pkCreator,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pkMender != null" >
+        #{pkMender,jdbcType=CHAR},
+      </if>
+      <if test="mendTimeLast != null" >
+        #{mendTimeLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ultrapower.pojo.AdcBmPortExample" resultType="java.lang.Integer" >
+    select count(*) from adc_bm_port
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update adc_bm_port
+    <set >
+      <if test="record.pkBmPort != null" >
+        PK_BM_PORT = #{record.pkBmPort,jdbcType=CHAR},
+      </if>
+      <if test="record.version != null" >
+        VERSION = #{record.version,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provCode != null" >
+        PROV_CODE = #{record.provCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.portType != null" >
+        PORT_TYPE = #{record.portType,jdbcType=INTEGER},
+      </if>
+      <if test="record.protocol != null" >
+        PROTOCOL = #{record.protocol,jdbcType=VARCHAR},
+      </if>
+      <if test="record.port != null" >
+        PORT = #{record.port,jdbcType=VARCHAR},
+      </if>
+      <if test="record.severityLevel != null" >
+        SEVERITY_LEVEL = #{record.severityLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeleted != null" >
+        IS_DELETED = #{record.isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.pkCreator != null" >
+        PK_CREATOR = #{record.pkCreator,jdbcType=CHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pkMender != null" >
+        PK_MENDER = #{record.pkMender,jdbcType=CHAR},
+      </if>
+      <if test="record.mendTimeLast != null" >
+        MEND_TIME_LAST = #{record.mendTimeLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update adc_bm_port
+    set PK_BM_PORT = #{record.pkBmPort,jdbcType=CHAR},
+      VERSION = #{record.version,jdbcType=VARCHAR},
+      PROV_CODE = #{record.provCode,jdbcType=VARCHAR},
+      PORT_TYPE = #{record.portType,jdbcType=INTEGER},
+      PROTOCOL = #{record.protocol,jdbcType=VARCHAR},
+      PORT = #{record.port,jdbcType=VARCHAR},
+      SEVERITY_LEVEL = #{record.severityLevel,jdbcType=INTEGER},
+      IS_DELETED = #{record.isDeleted,jdbcType=INTEGER},
+      PK_CREATOR = #{record.pkCreator,jdbcType=CHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      PK_MENDER = #{record.pkMender,jdbcType=CHAR},
+      MEND_TIME_LAST = #{record.mendTimeLast,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ultrapower.pojo.AdcBmPort" >
+    update adc_bm_port
+    <set >
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="provCode != null" >
+        PROV_CODE = #{provCode,jdbcType=VARCHAR},
+      </if>
+      <if test="portType != null" >
+        PORT_TYPE = #{portType,jdbcType=INTEGER},
+      </if>
+      <if test="protocol != null" >
+        PROTOCOL = #{protocol,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        PORT = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="severityLevel != null" >
+        SEVERITY_LEVEL = #{severityLevel,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="pkCreator != null" >
+        PK_CREATOR = #{pkCreator,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pkMender != null" >
+        PK_MENDER = #{pkMender,jdbcType=CHAR},
+      </if>
+      <if test="mendTimeLast != null" >
+        MEND_TIME_LAST = #{mendTimeLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PK_BM_PORT = #{pkBmPort,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ultrapower.pojo.AdcBmPort" >
+    update adc_bm_port
+    set VERSION = #{version,jdbcType=VARCHAR},
+      PROV_CODE = #{provCode,jdbcType=VARCHAR},
+      PORT_TYPE = #{portType,jdbcType=INTEGER},
+      PROTOCOL = #{protocol,jdbcType=VARCHAR},
+      PORT = #{port,jdbcType=VARCHAR},
+      SEVERITY_LEVEL = #{severityLevel,jdbcType=INTEGER},
+      IS_DELETED = #{isDeleted,jdbcType=INTEGER},
+      PK_CREATOR = #{pkCreator,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      PK_MENDER = #{pkMender,jdbcType=CHAR},
+      MEND_TIME_LAST = #{mendTimeLast,jdbcType=TIMESTAMP}
+    where PK_BM_PORT = #{pkBmPort,jdbcType=CHAR}
+  </update>
+</mapper>
