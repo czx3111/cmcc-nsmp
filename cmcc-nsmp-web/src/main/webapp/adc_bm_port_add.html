@@ -109,7 +109,7 @@
 				<th width="100">资产状态</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="amAssets">
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" id="asset1" name="asset"></td>
 				<td>北京</td>
@@ -205,7 +205,7 @@
 	<br>
 	<div class="row cl">
 		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-			<input class="btn btn-default radius" onclick="cancel()" type="button" value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+			<input class="btn btn-default radius" onclick="closeAddPage()" type="button" value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
 			<input class="btn btn-primary radius" onclick="saveBmPort()" type="button" value="&nbsp;&nbsp;保存&nbsp;&nbsp;">
 		</div>
 	</div>
@@ -301,25 +301,37 @@ function saveBmPort() {
         var protocol = $(this).find('td:eq(2) select').val();//端口协议
         var port = $(this).find('td:eq(3) input').val();//端口
         var severityLevel = $(this).find('td:eq(4) select').val();//严重级别；高中低（2、1、0）
-		var j = '{"portType": "'+portType+'","protocol": "'+protocol+'","port": "'+port+'","severityLevel": "'+severityLevel+'"}';
-		arr.push(j);
+		//var j = {"portType": "'+portType+'","protocol": "'+protocol+'","port": "'+port+'","severityLevel": "'+severityLevel+'"};
+        var jport = { 'portType': ''+portType+'', 'protocol': ''+protocol+'','port': ''+port+'','severityLevel': ''+severityLevel+'' };
+    	arr.push(jport)
     });
-    alert(arr)
-   /* var a = $("#f1").serializeObject();
-    var b = $("#f2").serializeObject();
-    alert(a);
-    alert(b);*/
-	/*$.ajax({
-		url:'/test1',
-		data:$("#portForm").serialize(),
-		dataType:'json',
-		success:function (data) {
 
+    var assetIds = $.cookie("assetIds");
+    //var reqVO = {'adcBmPort': arr,'pkAssets': assetIds};
+
+    var reqVO = {'adcBmPort': arr,'pkAssets': assetIds};
+
+    $.ajax({
+        url:'/addAdcBmPort',
+        type:'post',
+        //data:JSON.stringify(d),
+        data:JSON.stringify(reqVO),
+        dataType:'json',
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            //添加成功，将已选资产列表清空 + 资产id
+			$.cookie("selectedAsset","");
+            $.cookie("assetIds","");
+
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.msg('添加成功!',{icon:1,time:1200});
+            parent.layer.close(index);//关闭窗口
         },
-		error:function () {
-			alert("请求失败");
+        error:function () {
+            alert("请求失败");
         }
-	});*/
+    });
+
 }
 
 /*已选资产*/
@@ -330,11 +342,14 @@ function selectedAsset() {
 function add() {
     //$(obj).remove();
     layer.msg('已添加!',{icon: 1,time:1200});
-    //var arr=[];
+    var assetIds=[];
     $("[name = asset]:checkbox").each(function(){
         //if ($(this).prop("checked")){
 		//if(true) if(bol)
+
          if ($(this).prop("checked") == true){
+
+             assetIds.push($(this).val())
 
             var selectedAsset = "";
             if (typeof($.cookie("selectedAsset")) != "undefined"){
@@ -348,6 +363,44 @@ function add() {
             $(this).parents("tr").remove();
         }
     })
+    $.cookie("assetIds",assetIds);
+}
+
+$(function () {
+	$.ajax({
+		url:'/carregarSelect',
+		dataType:'json',
+		success:function (data) {
+            showAmAssets(data.amAssets);
+        }
+	});
+})
+
+/**
+ * 显示资产待选列表
+ * @param amAssets
+ */
+function showAmAssets(amAssets) {
+	var s = "";
+	for (var i = 0 ; i < amAssets.length ;i++){
+	    s+="<tr class=\"text-c\">" +
+			"<td><input type=\"checkbox\" value=\""+amAssets[i].pkAsset+"\" name=\"asset\"></td>" +
+			"<td>"+amAssets[i].provCode+"</td>" +
+			"<td>"+amAssets[i].assetName+"</td>" +
+			"<td>192.168.3.2...</td>" +
+			"<td>操作系统->Centos</td>" +
+			"<td>北京->集团->海淀</td>" +
+			"<td>人工录入</td>" +
+			"<td>临时</td>" +
+			"</tr>";
+	}
+	$("#amAssets").html(s);
+}
+
+
+function closeAddPage() {
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);//关闭窗口
 }
 
 </script>

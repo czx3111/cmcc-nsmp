@@ -26,16 +26,21 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 属性基准管理 <span class="c-gray en">&gt;</span> 端口基准列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <form id="queryForm">
+        <button type="button" onclick="adc_bm_port_add()" class="btn btn-primary radius"  name=""><i class="Hui-iconfont"></i> +添加</button>
         <!--查询下拉框-->
         <div class="text-c" style="background-color: #f2f0ff;line-height: 50px">
-            省份：
-            <span>
-                <select class="select" style="width: 130px;text-align-last: center;height: 30px;">
-                    <option>所有</option>
-                    <option>所有1</option>
-                    <option>所有2</option>
-                </select>
-            </span>&emsp;
+
+            <span id="prov">
+                省份：
+                <span>
+                    <select class="select" style="width: 130px;text-align-last: center;height: 30px;">
+                        <option>所有</option>
+                        <option>所有1</option>
+                        <option>所有2</option>
+                    </select>
+                </span>&emsp;
+            </span>
+
             端口类型：
             <span>
                 <select class="select" style="width: 150px;text-align-last: center;height: 30px">
@@ -225,6 +230,20 @@
         });
     }
 
+    function adc_bm_port_add() {
+        parent.layer_show("添加端口基准信息","adc_bm_port_add.html","1200","600");
+    }
+
+    $(function () {
+        //id="prov"
+        //登录
+        var userIdentity = $.cookie("userIdentity");// g(group)  p(prov)
+        if(userIdentity == 'g'){
+            $("#prov").show();
+        }else{
+            $("#prov").hide();
+        }
+    })
 </script>
 </body>
 </html>

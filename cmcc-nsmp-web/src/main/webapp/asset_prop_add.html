@@ -1,0 +1,259 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="/favicon.ico" >
+<link rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>添加用户 - H-ui.admin v3.1</title>
+<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<article class="page-container">
+	基本信息<hr>
+	<form action="" method="post" class="form form-horizontal" id="form-member-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性名称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input style="width: 60%" type="text" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性编码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input style="width: 60%" type="text" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input style="width: 60%" type="text" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">属性分类：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box" style="width: 60%">
+					<select class="select" size="1" name="city">
+						<option value="1">基本信息</option>
+						<option value="2">xx</option>
+						<option value="3">xx</option>
+					</select>
+				</span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>结构类型：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="sex" type="radio" id="sex-1" checked>
+					<label for="sex-1" onclick="show_enum_div('n')">字符</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-2" name="sex" >
+					<label for="sex-2" onclick="show_enum_div('n')">日期</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-3" name="sex">
+					<label for="sex-3" onclick="show_enum_div('n')">数字</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-4" name="sex" >
+					<label for="sex-4" onclick="show_enum_div('e')">枚举</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否必填：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="check-box">
+					<input name="sex" type="checkbox" id="c1" checked>
+					<label for="c1">必填</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否显示：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="check-box">
+					<input name="sex" type="checkbox" id="c2" checked>
+					<label for="c1">显示</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>采集方式：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="check-box">
+					<input type="checkbox" id="c11" name="sex" checked>
+					<label for="c11">人工录入</label>
+				</div>
+				<div class="check-box">
+					<input type="checkbox" id="c21" name="sex" checked>
+					<label for="c21">登录采集</label>
+				</div>
+				<div class="check-box">
+					<input type="checkbox" id="c31" name="sex" checked>
+					<label for="c31">远程扫描</label>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<div id="enum_div" style="display: none">
+		枚举值<hr>
+		<br>
+		<table class="table table-border table-bordered table-bg">
+			<thead>
+				<tr class="text-c">
+					<th width="50">序号</th>
+					<th width="100">值域名称</th>
+					<th width="100">值域编码</th>
+					<th width="100">值域描述</th>
+					<th width="100">显示顺序</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody id="tb">
+				<tr>
+					<td>1</td>
+					<td><input type="text"></td>
+					<td><input type="text"></td>
+					<td><input type="text"></td>
+					<td><input type="text"></td>
+					<td>
+						<a onclick="addrow()"><span style="font-weight: bold;font-size: 20px">+</span></a>
+						<a onclick="removeRow(this)"><span style="font-weight: bold;font-size: 20px">-</span></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-default radius" onclick="cancel()" type="button" value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+			<input class="btn btn-primary radius" onclick="saveGroup()" type="button" value="&nbsp;&nbsp;保存&nbsp;&nbsp;">
+		</div>
+	</div>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").validate({
+		rules:{
+			username:{
+				required:true,
+				minlength:2,
+				maxlength:16
+			},
+			sex:{
+				required:true,
+			},
+			mobile:{
+				required:true,
+				isMobile:true,
+			},
+			email:{
+				required:true,
+				email:true,
+			},
+			uploadfile:{
+				required:true,
+			},
+			
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			//$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			//parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+<script>
+	function show_enum_div(e) {
+	    if(e == 'e'){
+            $("#enum_div").show();
+		}else{
+            $("#enum_div").hide();
+		}
+
+    }
+
+    /*取消*/
+    function cancel() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);//关闭窗口
+    }
+
+    /*添加行*/
+    var i = 2;
+    function addrow() {
+        var s = "<tr>" +
+			"<td>"+(i++)+"</td>" +
+			"<td><input type=\"text\"></td>" +
+			"<td><input type=\"text\"></td>" +
+			"<td><input type=\"text\"></td>" +
+			"<td><input type=\"text\"></td>" +
+			"<td>" +
+			"<a onclick=\"addrow()\"><span style=\"font-weight: bold;font-size: 20px\">+</span></a>" +
+			"<a onclick=\"removeRow(this)\"><span style=\"font-weight: bold;font-size: 20px\">-</span></a>" +
+			"</td>" +
+			"</tr>";
+        $("#tb").append(s);
+    }
+
+    /*删除行*/
+    function removeRow(obj) {
+        $(obj).parents("tr").remove();/*删减掉当前行tr*/
+    }
+</script>
+</body>
+</html>

@@ -1,17 +1,28 @@
 package com.ultrapower.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ultrapower.pojo.AdcPortBmReqVO;
+import com.ultrapower.service.BmPortAssetService;
+import org.omg.CORBA.ObjectHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 public class BmPortAssetController {
+    @Autowired
+    BmPortAssetService bmPortAssetService;
 
-    @RequestMapping("/carregarSelect")
+    @GetMapping("/carregarSelect")
     public Map<String,Object> carregarSelect(){
+        Map<String, Object> map = bmPortAssetService.carregarSelect();
+        return map;
+    }
 
-        return null;
+    @PostMapping("/addAdcBmPort")
+    public Map<String,Object> addAdcBmPort(@RequestBody AdcPortBmReqVO adcPortBmReqVO){
+        Map<String, Object> map = bmPortAssetService.addAdcBmPort(adcPortBmReqVO);
+        return map;
     }
 
 }
