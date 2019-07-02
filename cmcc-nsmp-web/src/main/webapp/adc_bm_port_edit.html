@@ -21,81 +21,22 @@
 <![endif]-->
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 属性基准管理 <span class="c-gray en">&gt;</span> 添加端口基准信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<!--选择资产-->
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
-				<th scope="col" colspan="7"><span style="font-weight: bold;font-size: 13px">选择资产</span></th>
+				<th scope="col" colspan="7"><span style="font-weight: bold;font-size: 13px">已选资产</span></th>
 				<th>
-					<button type="button" onclick="selectedAsset()" class="btn btn-primary radius"  name=""><i class="Hui-iconfont"></i> 已选资产</button>
+					<button type="button" onclick="selectedAsset()" class="btn btn-primary radius"  name=""><i class="Hui-iconfont"></i> 选择资产</button>
 				</th>
 			</tr>
 			<tr>
 				<th scope="col" colspan="8">
-					<div class="text-l" style="background-color: #A3C6C8;line-height: 32px">
-						省份：
-						<span>
-							<select class="select" style="width: 130px;text-align-last: center;height: 30px;">
-								<option>所有</option>
-								<option>所有1</option>
-								<option>所有2</option>
-							</select>
-						</span>&emsp;
-
-						业务系统：
-						<span>
-							<select class="select" style="width: 150px;text-align-last: center;height: 27px">
-								<option>所有</option>
-								<option>请选择1</option>
-								<option>请选择2</option>
-							</select>
-						</span>&emsp;
-
-						资产类型：
-						<span>
-							<select class="select" style="width: 130px;text-align-last: center;height: 27px">
-								<option>所有</option>
-								<option>请选择1</option>
-								<option>请选择2</option>
-							</select>
-						</span>&emsp;
-
-						来源：
-						<span>
-							<select class="select" style="width: 130px;text-align-last: center;height: 27px">
-								<option>所有</option>
-								<option>请选择1</option>
-								<option>请选择2</option>
-							</select>
-						</span>&emsp;<br>
-
-						资产名称：
-						<input type="text" class="input-text" name="" style="width:130px;height: 27px">&emsp;
-
-						资产IP：
-						<input type="text" class="input-text" name="" style="width:130px;height: 27px">&emsp;
-
-						资产状态：
-						<span>
-							<select class="select" style="width: 130px;text-align-last: center;height: 27px">
-								<option>所有</option>
-								<option>请选择1</option>
-								<option>请选择2</option>
-							</select>
-						</span>&emsp;
-
-						<!--查询、重置-->
-						<button type="button" onclick="searchBmPort()" class="btn btn-primary radius"  name=""><i class="Hui-iconfont"></i> 查询</button>
-						<button type="reset" class="btn btn-primary radius"  name=""><i class="Hui-iconfont"></i> 重置</button>
-					</div>
-					<div class="cl pd-5 bg-1 bk-gray mt-20">
 						<span class="l">
-							<a href="javascript:;" onclick="add()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加</a>
-							<a href="javascript:;" onclick="" class="btn btn-primary radius">全部添加资产</a>
+							<a href="javascript:;" onclick="add()" class="btn btn-primary radius">删除</a>
+							<a href="javascript:;" onclick="" class="btn btn-primary radius">全部删除</a>
 						</span>
-					</div>
 				</th>
 			</tr>
 			<tr class="text-c">
@@ -111,29 +52,9 @@
 		</thead>
 		<tbody>
 			<tr class="text-c">
-				<td><input type="checkbox" value="1" id="asset1" name="asset"></td>
+				<td><input type="checkbox" value="1" id="asset" name="asset"></td>
 				<td>北京</td>
-				<td>111</td>
 				<td>192.168.3.2...</td>
-				<td>操作系统->Centos</td>
-				<td>北京->集团->海淀</td>
-				<td>人工录入</td>
-				<td>临时</td>
-			</tr>
-			<tr class="text-c">
-				<td><input type="checkbox" value="2" id="asset2" name="asset"></td>
-				<td>北京</td>
-				<td>222</td>
-				<td>192.168.3.2...</td>
-				<td>操作系统->Centos</td>
-				<td>北京->集团->海淀</td>
-				<td>人工录入</td>
-				<td>临时</td>
-			</tr>
-			<tr class="text-c">
-				<td><input type="checkbox" value="3" id="asset3" name="asset"></td>
-				<td>北京</td>
-				<td>333</td>
 				<td>192.168.3.2...</td>
 				<td>操作系统->Centos</td>
 				<td>北京->集团->海淀</td>
@@ -151,20 +72,12 @@
 			<tr>
 				<th scope="col" colspan="6"><span style="font-weight: bold;font-size: 13px">端口信息</span></th>
 			</tr>
-			<tr>
-				<th scope="col" colspan="6">
-					<span class="l">
-						<a href="javascript:;" onclick="admin_permission_add('清空','admin-permission-add.html','','310')" class="btn btn-primary radius">清空</a>
-					</span>
-				</th>
-			</tr>
 			<tr class="text-c">
 				<th width="50">序号</th>
 				<th width="50">端口类型</th>
 				<th width="200">协议</th>
 				<th width="200">端口</th>
 				<th width="200">严重级别</th>
-				<th width="100">操作</th>
 			</tr>
 		</thead>
 		<!--<form id="portForm">-->
@@ -193,10 +106,6 @@
 						<option value="1">中</option>
 						<option value="0">低</option>
 					</select>
-				</td>
-				<td>
-					<a onclick="addrow()"><span style="font-weight: bold;font-size: 20px">+</span></a>
-					<a onclick="removeRow(this)"><span style="font-weight: bold;font-size: 20px">-</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -254,47 +163,7 @@ function admin_permission_del(obj,id){
 	});
 }
 
-var i = 2;
-function addrow() {
-	var s =	'<tr class="text-c">'+
-				'<td>'+(i++)+'</td>'+
-				'<td>'+
-					'<select name="portType">'+
-						'<option value="0">禁止开放</option>'+
-						'<option value="1">必须开放</option>'+
-					'</select>'+
-				'</td>'+
-				'<td>'+
-					'<select name="protocol">'+
-						'<option>TCP</option>'+
-						'<option>HTTP</option>'+
-					'</select>'+
-				'</td>'+
-				'<td>'+
-					'<input type="text" name="">'+
-				'</td>'+
-				'<td>'+
-					'<select>'+
-						'<option>--请选择--</option>'+
-						'<option value="2">高</option>'+
-						'<option value="1">中</option>'+
-						'<option value="0">低</option>'+
-					'</select>'+
-				'</td>'+
-				'<td>'+
-					'<a onclick="addrow()"><span style="font-weight: bold;font-size: 20px">+</span></a>'+
-					'<a onclick="removeRow(this)"><span style="font-weight: bold;font-size: 20px">-</span></a>'+
-				'</td>'+
-			'</tr>';
-	$("#tb").append(s);
-}
-
-function removeRow(obj) {
-	$(obj).parents("tr").remove();/*删减掉当前行tr*/
-}
-
 function saveBmPort() {
-    var arr = [];
     $('#tb tr').each(function(i){
         //取表格的第i行第n列的标签的值
         var portType = $(this).find('td:eq(1) select').val();//端口类型；0-禁止开放，1-必须开放
@@ -302,9 +171,8 @@ function saveBmPort() {
         var port = $(this).find('td:eq(3) input').val();//端口
         var severityLevel = $(this).find('td:eq(4) select').val();//严重级别；高中低（2、1、0）
 		var j = '{"portType": "'+portType+'","protocol": "'+protocol+'","port": "'+port+'","severityLevel": "'+severityLevel+'"}';
-		arr.push(j);
+		alert(j);
     });
-    alert(arr)
    /* var a = $("#f1").serializeObject();
     var b = $("#f2").serializeObject();
     alert(a);
@@ -332,24 +200,17 @@ function add() {
     layer.msg('已添加!',{icon: 1,time:1200});
     //var arr=[];
     $("[name = asset]:checkbox").each(function(){
-        //if ($(this).prop("checked")){
-		//if(true) if(bol)
-         if ($(this).prop("checked") == true){
-
-            var selectedAsset = "";
-            if (typeof($.cookie("selectedAsset")) != "undefined"){
-                selectedAsset = $.cookie("selectedAsset");
-			}
-            selectedAsset+=  ("<tr class=\"text-c\">"+$(this).parents("tr").html()+"</tr>");
-
-            $.cookie("selectedAsset",selectedAsset);
-
-            /*被勾选的当前行移除掉*/
+        if ($(this).prop("checked") == true){
+            //arr.push($(this).val());
             $(this).parents("tr").remove();
         }
     })
 }
 
+function cancel() {
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);//关闭窗口
+}
 </script>
 </body>
 </html>
